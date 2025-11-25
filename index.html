@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Portfolio | Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --bg-color: #0a192f;
+            --light-bg: #112240;
+            --text-color: #8892b0;
+            --heading-color: #ccd6f6;
+            --accent-color: #64ffda;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            color: var(--heading-color);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 1px;
+            background: var(--text-color);
+            margin-left: 20px;
+            opacity: 0.3;
+        }
+
+        .highlight { color: var(--accent-color); }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(10, 25, 47, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--heading-color);
+        }
+
+        .nav-links a:hover { color: var(--accent-color); }
+
+        /* --- Hero Section --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .hero-mono {
+            font-family: var(--font-mono);
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--heading-color);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 3.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-desc {
+            max-width: 500px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-family: var(--font-mono);
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        /* --- Projects Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+            position: relative;
+            top: 0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .project-title {
+            color: var(--heading-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            color: var(--text-color);
+        }
+
+        /* --- Skills Section --- */
+        .skills-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .skill-list li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .skill-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 2rem; }
+            .skills-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* 간단하게 모바일 메뉴 숨김 처리 */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">&lt;Security/&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#about"><span class="highlight">01.</span> About</a></li>
+                <li><a href="#skills"><span class="highlight">02.</span> Skills</a></li>
+                <li><a href="#projects"><span class="highlight">03.</span> Projects</a></li>
+                <li><a href="#contact"><span class="highlight">04.</span> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <p class="hero-mono fade-in">Hi, my name is</p>
+            <h1 class="hero-title fade-in">홍길동.</h1>
+            <h2 class="hero-subtitle fade-in">I secure the digital world.</h2>
+            <p class="hero-desc fade-in">
+                시스템의 취약점을 분석하고 안전한 아키텍처를 설계하는 보안 연구원입니다. 
+                모의해킹(Penetration Testing)과 보안 솔루션 개발에 관심이 많습니다.
+            </p>
+            <a href="#projects" class="btn fade-in">Check my work!</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title fade-in"><span class="highlight">01.</span> About Me</h2>
+        <div class="fade-in">
+            <p>
+                안녕하세요! 저는 웹 보안과 네트워크 포렌식에 열정을 가진 정보보안 전문가 지망생 홍길동입니다.
+                어릴 적 컴퓨터 바이러스를 직접 치료해보고 싶다는 호기심에서 시작해, 이제는 기업과 개인의 소중한 자산을 지키는 방패가 되고자 합니다.
+            </p>
+            <br>
+            <p>
+                현재는 <span class="highlight">Python</span>과 <span class="highlight">C++</span>을 주력으로 보안 도구를 개발하고 있으며, 
+                최신 CVE 분석을 즐깁니다.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title fade-in"><span class="highlight">02.</span> Skills</h2>
+        <div class="skills-content fade-in">
+            <div>
+                <h3 style="color:var(--heading-color); margin-bottom:15px;">Languages & Scripting</h3>
+                <ul class="skill-list">
+                    <li>Python (Security Automation)</li>
+                    <li>C/C++ (System Programming)</li>
+                    <li>JavaScript (Node.js)</li>
+                    <li>SQL & NoSQL</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color:var(--heading-color); margin-bottom:15px;">Security & Tools</h3>
+                <ul class="skill-list">
+                    <li>Burp Suite Pro</li>
+                    <li>Wireshark / Tcpdump</li>
+                    <li>Metasploit Framework</li>
+                    <li>Reverse Engineering (IDA, Ghidra)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title fade-in"><span class="highlight">03.</span> Security Projects</h2>
+        
+        <div class="project-grid">
+            
+            <div class="project-card fade-in">
+                <div class="project-top">
+                    <i class="fa-regular fa-folder"></i>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h3 class="project-title">Custom Packet Sniffer</h3>
+                <p class="project-desc">
+                    Raw Socket을 이용하여 네트워크 패킷을 캡처하고 분석하는 도구입니다. TCP/IP 헤더를 파싱하여 의심스러운 트래픽 패턴을 탐지합니다.
+                </p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Scapy</span>
+                    <span>Socket Prog</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-top">
+                    <i class="fa-regular fa-folder"></i>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h3 class="project-title">Web Vuln Scanner</h3>
+                <p class="project-desc">
+                    자동화된 웹 취약점 스캐너입니다. SQL Injection 및 XSS 취약점을 크롤링 기반으로 탐지하고 리포트를 생성합니다.
+                </p>
+                <div class="project-tech">
+                    <span>Go</span>
+                    <span>Crawler</span>
+                    <span>OWASP Top 10</span>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-top">
+                    <i class="fa-regular fa-folder"></i>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <h3 class="project-title">Malware Sandbox</h3>
+                <p class="project-desc">
+                    가상 환경에서 의심 파일을 실행하고 행위(API Hooking, 레지스트리 변경)를 모니터링하는 샌드박스 시스템 구축 프로젝트입니다.
+                </p>
+                <div class="project-tech">
+                    <span>C++</span>
+                    <span>Windows API</span>
+                    <span>VirtualBox</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="container" style="text-align: center; margin-bottom: 100px;">
+        <h2 class="section-title fade-in" style="justify-content: center; margin-bottom: 20px;">
+            <span class="highlight">04.</span> Get In Touch
+        </h2>
+        <p class="fade-in" style="max-width: 600px; margin: 0 auto 40px auto;">
+            현재 새로운 기회를 찾고 있습니다. 보안 프로젝트 협업이나 채용 관련 제안이 있으시다면 언제든 연락 주세요.
+        </p>
+        <a href="mailto:email@example.com" class="btn fade-in">Say Hello</a>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Hong Gildong</p>
+        <div style="margin-top: 10px;">
+            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-github"></i></a>
+            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // 애니메이션 한 번만 실행
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
