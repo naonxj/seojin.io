@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 상세: [프로젝트 제목] | [당신의 이름]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* V6 스타일 재사용 */
+        :root {
+            --color-bg-dark: #111111;
+            --color-card-bg: #1A1A1A;
+            --color-accent-aqua: #00BCD4;
+            --color-accent-dark: #0097A7;
+            --color-text-light: #FAFAFA;
+            --color-text-medium: #888888;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color-accent-aqua);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent-dark);
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            padding: 25px 5%;
+            border-bottom: 1px solid #333333;
+        }
+        .back-link {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* MAIN CONTENT LAYOUT */
+        main {
+            padding: 50px 10%; /* 좌우 여백을 넓게 잡아 가독성 향상 */
+            max-width: 1200px; /* 최대 너비 제한 */
+            margin: 0 auto;
+        }
+
+        /* PROJECT TITLE SECTION */
+        .project-header {
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--color-accent-aqua);
+        }
+        .project-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .project-header p {
+            font-size: 1.2rem;
+            color: var(--color-text-medium);
+            margin-bottom: 20px;
+        }
+
+        /* TAGS & INFO */
+        .tag {
+            display: inline-block;
+            background-color: #333333;
+            color: var(--color-accent-aqua);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        .info-box {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--color-text-medium);
+        }
+        .info-item strong {
+            color: var(--color-text-light);
+            margin-right: 5px;
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            margin-bottom: 80px;
+        }
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--color-accent-aqua);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333333;
+            letter-spacing: 0.5px;
+        }
+        .content-section p {
+            margin-bottom: 25px;
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+        }
+        .content-section ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        .content-section ul li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 8px;
+            color: var(--color-text-medium);
+        }
+        .content-section ul li::before {
+            content: '-';
+            color: var(--color-accent-aqua);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* IMAGE AND VISUALS */
+        .visual-container {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: var(--color-card-bg);
+            border: 1px solid #333333;
+            border-radius: 6px;
+        }
+        .visual-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        .visual-container figcaption {
+            font-size: 0.9rem;
+            color: var(--color-text-medium);
+            text-align: center;
+        }
+        
+        /* CODE BLOCK */
+        pre {
+            background-color: #0A0A0A;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--color-accent-aqua);
+        }
+        code {
+            font-family: 'Roboto Mono', monospace; /* 코드 폰트 사용 */
+            color: #E0E0E0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 5%;
+            border-top: 1px solid #333333;
+            color: var(--color-text-medium);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-link">← 포트폴리오 메인으로 돌아가기</a>
+    </header>
+
+    <main>
+        <section class="project-header">
+            <h1>[프로젝트 제목: Zero Trust 기반 클라우드 망분리 구축]</h1>
+            <p>클라우드 환경에서 레거시 망분리 개념을 탈피하고, 최소 권한 원칙에 기반한 Zero Trust Network Architecture(ZTNA)를 구현한 프로젝트입니다.</p>
+
+            <div class="info-box">
+                <div class="info-item"><strong>기간:</strong> 2024.03 - 2024.06 (4개월)</div>
+                <div class="info-item"><strong>역할:</strong> 보안 아키텍트 (100% 기여)</div>
+                <div class="info-item"><strong>결과:</strong> 내부 보안 지표 15% 개선 달성</div>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="tag">#ZeroTrust</span>
+                <span class="tag">#AWS</span>
+                <span class="tag">#Microsegmentation</span>
+                <span class="tag">#Terraform</span>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>01. 문제 정의 및 프로젝트 목표</h2>
+            <p>기존 클라우드 환경은 넓은 범위의 네트워크 허용 규칙으로 인해 측면 이동(Lateral Movement) 공격에 취약했습니다. 내부 사용자 또는 워크로드 간의 통제 부재는 침해 사고 시 피해 확산을 막기 어렵다는 심각한 문제를 내포하고 있었습니다.</p>
+            <ul>
+                <li>**문제:** 과도한 네트워크 접근 허용으로 인한 측면 이동 공격 위험.</li>
+                <li>**목표 1:** 모든 통신에 대한 인증/인가(Authentication/Authorization) 강제화.</li>
+                <li>**목표 2:** 워크로드 간의 Microsegmentation을 구현하여 최소 권한 통신 모델 정착.</li>
+                <li>**목표 3:** 모든 보안 정책을 코드(IaC)로 관리하여 배포 자동화 및 관리의 용이성 확보.</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>02. 프로젝트 방법론 (Methodology)</h2>
+            <p>Google BeyondCorp 모델을 기반으로 AWS 환경에 적합한 ZTNA 모델을 설계했습니다. AWS Network Firewall과 Security Groups, 그리고 Terraform을 핵심 툴로 사용했습니다.</p>
+            
+            <h3>사용 기술 및 툴</h3>
+            <div class="info-box">
+                <span class="tag" style="background-color: var(--color-accent-aqua); color: var(--color-bg-dark);">AWS Network Firewall</span>
+                <span class="tag" style="background-color: var(--color-accent-aqua); color: var(--color-bg-dark);">Terraform</span>
+                <span class="tag" style="background-color: var(--color-accent-aqua); color: var(--color-bg-dark);">Lambda</span>
+                <span class="tag" style="background-color: var(--color-accent-aqua); color: var(--color-bg-dark);">Python</span>
+            </div>
+            
+            <h3>Terraform을 이용한 보안 그룹 자동화 예시</h3>
+            <pre><code>
+resource "aws_security_group" "web_sg" {
+  name        = "web-server-sg"
+  vpc_id      = var.vpc_id
+
+  # 인바운드: 오직 로드밸런서(LB)로부터의 443 포트만 허용
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    security_groups = [aws_security_group.lb_sg.id]
+  }
+
+  # 아웃바운드: 오직 데이터베이스(DB)로의 3306 포트만 허용
+  egress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    security_groups = [aws_security_group.db_sg.id]
+  }
+}
+            </code></pre>
+        </section>
+
+        <section class="content-section">
+            <h2>03. 핵심 성과 및 Visuals</h2>
+            <p>프로젝트 완료 후, 네트워크 세그멘테이션 평가 지표가 크게 개선되었으며, 침해사고 대응팀의 내부 이동 경로 분석 시간이 단축되었습니다.</p>
+            
+            <figure class="visual-container">
+                <img src="path/to/project_architecture_diagram.jpg" alt="클라우드 ZTNA 아키텍처 다이어그램">
+                <figcaption>그림 1: 구현된 Microsegmentation을 보여주는 AWS 아키텍처 다이어그램. (이미지 주소 변경 필요)</figcaption>
+            </figure>
+
+            <figure class="visual-container">
+                <img src="path/to/policy_status_dashboard.png" alt="정책 적용 대시보드 스크린샷">
+                <figcaption>그림 2: 모든 워크로드에 ZTNA 정책이 적용된 상태를 보여주는 내부 대시보드 화면.</figcaption>
+            </figure>
+            
+            <p>또한, 보안 그룹 정책의 형상 관리가 용이해져, 새로운 서비스를 배포할 때 보안 정책 승인 시간이 1/2로 단축되는 효과를 가져왔습니다.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>04. 결론 및 Learning</h2>
+            <p>Zero Trust 개념을 클라우드 환경에 적용하는 과정에서 기술적 난이도와 조직 내의 문화적 변화가 가장 큰 도전이었습니다. 그러나 코드 기반 인프라(IaC)를 통해 보안 정책을 관리함으로써, 보안과 민첩성을 동시에 확보할 수 있음을 입증했습니다.</p>
+            <ul>
+                <li>**Learning 1:** 보안 정책을 코드로 관리할 때, 정책의 DRY(Don't Repeat Yourself) 원칙 적용이 매우 중요함.</li>
+                <li>**Learning 2:** 클라우드 네이티브 보안 솔루션 활용이 레거시 솔루션보다 유연하고 비용 효율적임.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 [당신의 이름]. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

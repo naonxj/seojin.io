@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Portfolio | Name</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>사이버 보안 전문가 | [당신의 이름] 포트폴리오 (V6 - Deep Aqua)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* --- CSS Variables & Reset --- */
+        /* CSS 변수 설정 및 기본 스타일 */
         :root {
-            --bg-color: #0a192f;
-            --light-bg: #112240;
-            --text-color: #8892b0;
-            --heading-color: #ccd6f6;
-            --accent-color: #64ffda;
-            --font-mono: 'Courier New', Courier, monospace;
-            --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --color-bg-dark: #111111;        /* 배경색 (차콜 블랙) */
+            --color-card-bg: #1A1A1A;        /* 카드 배경색 (약간 밝은 블랙) */
+            --color-accent-aqua: #00BCD4;    /* 메인 포인트 컬러 (딥 아쿠아) */
+            --color-accent-dark: #0097A7;    /* 보조 포인트 컬러 (짙은 에메랄드) */
+            --color-text-light: #FAFAFA;     /* 밝은 텍스트 (순수 화이트에 가까움) */
+            --color-text-medium: #888888;    /* 중간 텍스트 (차분한 그레이) */
+            
+            --font-main: 'Inter', sans-serif;
         }
 
+        /* 기본 리셋 및 폰트 설정 */
         * {
             margin: 0;
             padding: 0;
@@ -24,396 +26,389 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-sans);
+            font-family: var(--font-main);
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-light);
             line-height: 1.6;
+            scroll-behavior: smooth;
+            font-size: 16px;
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-
-        /* --- Layout Utilities --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
+        a {
+            text-decoration: none;
+            color: var(--color-accent-aqua);
+            transition: color 0.3s ease;
         }
 
-        section {
-            padding: 100px 0;
+        a:hover {
+            color: var(--color-accent-dark);
         }
 
-        .section-title {
-            font-family: var(--font-mono);
-            font-size: 2rem;
-            color: var(--heading-color);
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 200px;
-            height: 1px;
-            background: var(--text-color);
-            margin-left: 20px;
-            opacity: 0.3;
-        }
-
-        .highlight { color: var(--accent-color); }
-
-        /* --- Navigation --- */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: rgba(10, 25, 47, 0.95);
-            padding: 20px 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .nav-content {
+        /* HEADER */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 25px 5%;
+            position: sticky;
+            top: 0;
+            background-color: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #333333;
         }
 
         .logo {
-            font-family: var(--font-mono);
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            font-weight: bold;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--color-text-light);
+            letter-spacing: -1px; /* 폰트를 더 깔끔하게 보이게 함 */
+        }
+        
+        .logo span {
+            color: var(--color-accent-aqua);
         }
 
-        .nav-links {
+        nav a {
+            margin-left: 45px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--color-text-light);
+        }
+
+        /* MAIN LAYOUT */
+        main {
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 140px 0 100px 0;
+            min-height: 80vh;
+        }
+
+        h2 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 70px;
+            color: var(--color-text-light);
+            position: relative;
+            display: inline-block;
+            letter-spacing: -1px;
+        }
+        
+        h2::after { /* 미니멀한 라인 강조 */
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-accent-aqua);
+            border-radius: 2px;
+        }
+
+        /* 1. HERO 섹션 */
+        #hero {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            text-align: left;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: var(--color-accent-aqua);
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            color: var(--color-text-medium);
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .cta-button {
+            padding: 16px 45px;
+            border: 2px solid var(--color-accent-aqua);
+            border-radius: 50px; /* 둥근 모양으로 세련됨 강조 */
+            font-weight: 700;
+            letter-spacing: 1px;
+            background-color: var(--color-accent-aqua);
+            color: var(--color-bg-dark);
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--color-accent-aqua);
+            box-shadow: 0 0 0 rgba(0, 188, 212, 0);
+            transform: translateY(-2px);
+        }
+
+        /* 2. SKILLS 섹션 */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-card {
+            background-color: var(--color-card-bg);
+            padding: 40px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid #333333;
+        }
+
+        .skill-card:hover {
+            border-color: var(--color-accent-aqua);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--color-accent-dark);
+            padding-bottom: 10px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card ul li {
+            margin-bottom: 12px;
+            color: var(--color-text-medium);
+            position: relative;
+            padding-left: 25px;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .skill-card ul li::before {
+            content: '✓';
+            color: var(--color-accent-aqua);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        /* 3. PROJECTS 섹션 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
         }
 
-        .nav-links a {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--heading-color);
-        }
-
-        .nav-links a:hover { color: var(--accent-color); }
-
-        /* --- Hero Section --- */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .hero-mono {
-            font-family: var(--font-mono);
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            color: var(--heading-color);
-            font-weight: 800;
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            font-size: 3.5rem;
-            color: var(--text-color);
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .hero-desc {
-            max-width: 500px;
-            margin-bottom: 50px;
-            font-size: 1.1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            font-family: var(--font-mono);
-            border-radius: 4px;
-        }
-
-        .btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-
-        /* --- Projects Section --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
         .project-card {
-            background-color: var(--light-bg);
-            padding: 30px;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-            position: relative;
-            top: 0;
+            background-color: var(--color-card-bg);
+            border-radius: 6px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            border-top: 5px solid transparent;
         }
 
         .project-card:hover {
-            transform: translateY(-7px);
+            border-top-color: var(--color-accent-aqua);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            font-size: 1.5rem;
-        }
-
-        .project-title {
-            color: var(--heading-color);
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+        .project-card h3 {
+            font-size: 1.6rem;
             font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--color-text-light);
         }
 
-        .project-desc {
-            font-size: 0.95rem;
+        .tag-list {
             margin-bottom: 20px;
         }
 
-        .project-tech {
-            font-family: var(--font-mono);
+        .tag {
+            display: inline-block;
+            background-color: #333333; /* 중립적인 배경 */
+            color: var(--color-accent-aqua);
+            padding: 5px 10px;
+            border-radius: 3px;
             font-size: 0.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            color: var(--text-color);
+            margin-right: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
-        /* --- Skills Section --- */
-        .skills-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+        /* 4. CONTACT 섹션 */
+        #contact {
+            text-align: center;
+        }
+        
+        #contact p {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            color: var(--color-text-medium);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .skill-list li {
-            position: relative;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
+        .contact-links a {
+            font-size: 1.1rem;
+            margin: 0 30px;
+            color: var(--color-accent-aqua);
+            border-bottom: 1px solid var(--color-accent-aqua);
+            padding-bottom: 3px;
         }
 
-        .skill-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        /* --- Footer --- */
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px 0;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-        }
-
-        /* --- Animations --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-subtitle { font-size: 2rem; }
-            .skills-content { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* 간단하게 모바일 메뉴 숨김 처리 */
+            padding: 40px 5%;
+            border-top: 1px solid #333333;
+            color: var(--color-text-medium);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="container nav-content">
-            <a href="#" class="logo">&lt;Security/&gt;</a>
-            <ul class="nav-links">
-                <li><a href="#about"><span class="highlight">01.</span> About</a></li>
-                <li><a href="#skills"><span class="highlight">02.</span> Skills</a></li>
-                <li><a href="#projects"><span class="highlight">03.</span> Projects</a></li>
-                <li><a href="#contact"><span class="highlight">04.</span> Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <header>
+        <div class="logo">[YOUR NAME] <span>.SEC</span></div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-    <section id="hero">
-        <div class="container">
-            <p class="hero-mono fade-in">Hi, my name is</p>
-            <h1 class="hero-title fade-in">홍길동.</h1>
-            <h2 class="hero-subtitle fade-in">I secure the digital world.</h2>
-            <p class="hero-desc fade-in">
-                시스템의 취약점을 분석하고 안전한 아키텍처를 설계하는 보안 연구원입니다. 
-                모의해킹(Penetration Testing)과 보안 솔루션 개발에 관심이 많습니다.
-            </p>
-            <a href="#projects" class="btn fade-in">Check my work!</a>
-        </div>
-    </section>
-
-    <section id="about" class="container">
-        <h2 class="section-title fade-in"><span class="highlight">01.</span> About Me</h2>
-        <div class="fade-in">
-            <p>
-                안녕하세요! 저는 웹 보안과 네트워크 포렌식에 열정을 가진 정보보안 전문가 지망생 홍길동입니다.
-                어릴 적 컴퓨터 바이러스를 직접 치료해보고 싶다는 호기심에서 시작해, 이제는 기업과 개인의 소중한 자산을 지키는 방패가 되고자 합니다.
-            </p>
-            <br>
-            <p>
-                현재는 <span class="highlight">Python</span>과 <span class="highlight">C++</span>을 주력으로 보안 도구를 개발하고 있으며, 
-                최신 CVE 분석을 즐깁니다.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills" class="container">
-        <h2 class="section-title fade-in"><span class="highlight">02.</span> Skills</h2>
-        <div class="skills-content fade-in">
-            <div>
-                <h3 style="color:var(--heading-color); margin-bottom:15px;">Languages & Scripting</h3>
-                <ul class="skill-list">
-                    <li>Python (Security Automation)</li>
-                    <li>C/C++ (System Programming)</li>
-                    <li>JavaScript (Node.js)</li>
-                    <li>SQL & NoSQL</li>
-                </ul>
+    <main>
+        <section id="hero">
+            <div class="hero-text">
+                <p style="color: var(--color-accent-aqua); font-size: 1.1rem; font-weight: 500;">ADVANCED SECURITY SOLUTIONS</p>
+                <h1>Designing <span>Resilience</span> into Systems.</h1>
+                <p>시스템에 탄력성을 설계합니다. 클라우드 인프라 보안, 자동화된 취약점 관리, 그리고 선제적인 위협 모델링을 통해 디지털 자산의 안전을 보장합니다.</p>
+                <a href="#projects" class="cta-button">VIEW PORTFOLIO</a>
             </div>
-            <div>
-                <h3 style="color:var(--heading-color); margin-bottom:15px;">Security & Tools</h3>
-                <ul class="skill-list">
-                    <li>Burp Suite Pro</li>
-                    <li>Wireshark / Tcpdump</li>
-                    <li>Metasploit Framework</li>
-                    <li>Reverse Engineering (IDA, Ghidra)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="container">
-        <h2 class="section-title fade-in"><span class="highlight">03.</span> Security Projects</h2>
-        
-        <div class="project-grid">
+        <section id="about">
+            <h2>About & Philosophy</h2>
+            <p style="font-size: 1.2rem; max-width: 900px; color: var(--color-text-medium); margin-bottom: 30px;">
+                저는 보안이 비즈니스 성장의 동력이라고 믿습니다. 개발 초기 단계부터 보안을 통합하는 **DevSecOps** 원칙을 고수하며, **위험 허용 범위를 명확히 정의**하고 기술적 통제를 구현합니다.
+            </p>
+            <p style="font-size: 1.1rem; color: var(--color-accent-aqua); font-weight: 600;">
+                CORE FOCUS: Cloud Native Security, Threat Modeling, Automation.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Cloud Security</h3>
+                    <ul>
+                        <li>AWS/GCP/Azure 보안 감사 및 강화</li>
+                        <li>CSPM 도구 운영 및 자동화</li>
+                        <li>Kubernetes/Container Runtime Security</li>
+                        <li>Zero Trust Architecture 구현</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Application Security</h3>
+                    <ul>
+                        <li>웹/API 취약점 진단 및 정적 분석 (SAST)</li>
+                        <li>코드 리뷰 및 시큐어 코딩 가이드라인</li>
+                        <li>자동화된 모의 해킹 (DAST) 파이프라인</li>
+                        <li>Threat Modeling 및 Design Review</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Detection & IR</h3>
+                    <ul>
+                        <li>SIEM/EDR 기반 위협 헌팅</li>
+                        <li>침해사고 대응 (IR) 플레이북 구축</li>
+                        <li>디지털 포렌식 및 증거 보전</li>
+                        <li>보안 자동화 및 대응 (SOAR)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <a href="project_detail_1.html" class="project-card">
+                    <h3>DevSecOps 파이프라인 취약점 통합</h3>
+                    <div class="tag-list">
+                        <span class="tag">DevSecOps</span>
+                        <span class="tag">SAST</span>
+                        <span class="tag">CI/CD</span>
+                    </div>
+                    <p style="color: var(--color-text-medium);">개발 프로세스에 SAST/DAST 도구를 통합하여 취약점 검사를 자동화하고, 보고서를 개발팀에 직접 연동.</p>
+                </a>
+                
+                <a href="project_detail_2.html" class="project-card">
+                    <h3>클라우드 네트워크 미세 분할 설계</h3>
+                    <div class="tag-list">
+                        <span class="tag">ZeroTrust</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">Microsegmentation</span>
+                    </div>
+                    <p style="color: var(--color-text-medium);">AWS VPC 환경에서 모든 워크로드를 격리하고, 최소 권한 원칙에 따른 네트워크 접근 제어를 구현.</p>
+                </a>
+
+                <a href="project_detail_3.html" class="project-card">
+                    <h3>OT/ICS 시스템 보안 컨설팅</h3>
+                    <div class="tag-list">
+                        <span class="tag">ICS</span>
+                        <span class="tag">RiskAssessment</span>
+                        <span class="tag">IoT</span>
+                    </div>
+                    <p style="color: var(--color-text-medium);">특수 운영 환경(OT/ICS)의 자산 목록화 및 위험 평가를 수행하고, 물리적/논리적 통제 방안을 제시.</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>보안 협력, 기술 문의, 또는 인재 관련 제안에 열려 있습니다. 아래 링크를 통해 편리하게 연락 주십시오. </p>
             
-            <div class="project-card fade-in">
-                <div class="project-top">
-                    <i class="fa-regular fa-folder"></i>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <h3 class="project-title">Custom Packet Sniffer</h3>
-                <p class="project-desc">
-                    Raw Socket을 이용하여 네트워크 패킷을 캡처하고 분석하는 도구입니다. TCP/IP 헤더를 파싱하여 의심스러운 트래픽 패턴을 탐지합니다.
-                </p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Scapy</span>
-                    <span>Socket Prog</span>
-                </div>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com">Email Me</a>
+                <a href="https://github.com/[your_github]" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/[your_linkedin]" target="_blank">LinkedIn</a>
             </div>
-
-            <div class="project-card fade-in">
-                <div class="project-top">
-                    <i class="fa-regular fa-folder"></i>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <h3 class="project-title">Web Vuln Scanner</h3>
-                <p class="project-desc">
-                    자동화된 웹 취약점 스캐너입니다. SQL Injection 및 XSS 취약점을 크롤링 기반으로 탐지하고 리포트를 생성합니다.
-                </p>
-                <div class="project-tech">
-                    <span>Go</span>
-                    <span>Crawler</span>
-                    <span>OWASP Top 10</span>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <div class="project-top">
-                    <i class="fa-regular fa-folder"></i>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <h3 class="project-title">Malware Sandbox</h3>
-                <p class="project-desc">
-                    가상 환경에서 의심 파일을 실행하고 행위(API Hooking, 레지스트리 변경)를 모니터링하는 샌드박스 시스템 구축 프로젝트입니다.
-                </p>
-                <div class="project-tech">
-                    <span>C++</span>
-                    <span>Windows API</span>
-                    <span>VirtualBox</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="contact" class="container" style="text-align: center; margin-bottom: 100px;">
-        <h2 class="section-title fade-in" style="justify-content: center; margin-bottom: 20px;">
-            <span class="highlight">04.</span> Get In Touch
-        </h2>
-        <p class="fade-in" style="max-width: 600px; margin: 0 auto 40px auto;">
-            현재 새로운 기회를 찾고 있습니다. 보안 프로젝트 협업이나 채용 관련 제안이 있으시다면 언제든 연락 주세요.
-        </p>
-        <a href="mailto:email@example.com" class="btn fade-in">Say Hello</a>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>Designed & Built by Hong Gildong</p>
-        <div style="margin-top: 10px;">
-            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-github"></i></a>
-            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" style="margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
-        </div>
+        <p>&copy; 2024 [당신의 이름]. All Rights Reserved. | Clean Code, Strong Security.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // 애니메이션 한 번만 실행
-                    }
-                });
-            }, observerOptions);
-
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(el => observer.observe(el));
-        });
-    </script>
 </body>
 </html>
